@@ -1,0 +1,70 @@
+//https://hack.codingblocks.com/app/contests/1238/380/problem
+
+
+//Take as input S, a string. Write a function that does basic string compression. Print the value returned. E.g. for input “aaabbccds” print out a3b2c2d1s1.
+
+//Input Format :
+//A single String S
+
+//Constraints
+//1 < = length of String < = 1000
+
+//Output Format
+//The compressed String.
+
+//Sample Input
+//aaabbccds
+
+//Sample Output
+//a3b2c2d1s1
+
+//Explanation
+//In the given sample test case 'a' is repeated 3 times consecutively, 'b' is repeated twice, 'c' is repeated twice and 'd and 's' occurred only once.
+
+import java.util.Scanner;
+
+public class StrCompression10
+{
+    public static void main(String[] args)
+    {
+        Scanner s = new Scanner(System.in);
+        String str = s.nextLine();
+        strcompression(str);
+}
+public static void strcompression(String str)
+{
+    String st = " ";
+    int i=0;
+    while ( i <str.length() )
+    {
+    char ch = str.charAt(i);
+    st = st+ ch;
+   int n = count(str, ch, i);
+   if (n>=1)
+   {
+       st = st+Integer.toString(n);
+   }
+   i = i+n;
+    }
+    System.out.println(st);
+}
+
+public static int count(String str, char ch, int index)
+{
+    int cnt = 0;
+    while(index < str.length())
+    {
+        if (ch == str.charAt(index))
+        {
+            cnt++;
+        }
+        else
+        {
+            break;
+        }
+        index++;
+
+    }
+    return cnt;
+}
+}
